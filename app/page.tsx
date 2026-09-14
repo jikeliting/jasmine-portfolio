@@ -1,61 +1,49 @@
 'use client';
-
-import { useState } from 'react';
-
-const projects = [
-  { id:'tob', number:'01', short:'TOB', title:'ToB 企业销售手册', category:'品牌叙事 · 编辑设计', description:'从品牌介绍进入产品系统，为企业客户建立清晰、专业且具有品质感的销售内容。', cover:'/work/tob-02.jpg', pages:['/work/tob-06.jpg','/work/tob-14.jpg'], color:'#e9e6dc', ink:'#151515' },
-  { id:'toc', number:'02', short:'TOC', title:'ToC 产品销售手册', category:'产品内容 · 消费沟通', description:'以生活场景、产品卖点和参数结构，完成从感受建立到信息转化。', cover:'/work/toc-01.jpg', pages:['/work/toc-11.jpg','/work/toc-16.jpg'], color:'#89b7df', ink:'#111' },
-  { id:'culture', number:'03', short:'CULTURE', title:'雇主品牌文化手册', category:'文化叙事 · 信息编排', description:'将抽象的企业文化转化为员工能够阅读、理解与传播的共同语言。', cover:'/work/culture-01.jpg', pages:['/work/culture-06.jpg','/work/culture-13.jpg'], color:'#d93832', ink:'#fff' },
-  { id:'promo', number:'04', short:'COLLATERAL', title:'企业宣传物料', category:'展板海报 · 空间传播', description:'针对真实观看距离与使用场景，重新组织卖点、焦点和阅读层级。', cover:'/work/promo-board.jpg', pages:['/work/promo-elevator.jpg','/work/promo-board.jpg'], color:'#20201f', ink:'#fff' },
-  { id:'mini', number:'05', short:'MINI APP', title:'微信小程序整体设计', category:'数字产品 · 视觉定制', description:'在既有功能模板上完成整体视觉设计，让品牌体验延伸至移动端。', cover:'/work/toc-15.jpg', pages:['/work/toc-17.jpg','/work/toc-04.jpg'], color:'#f0cf38', ink:'#171715' },
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
+type Work = {id:string;title:string;color:string;ink:string;width:number;height:number;cover?:string;pages:string[];rotated?:boolean};
+const works:Work[]=[
+{id:'culture',title:'企业文化手册',color:'#f6f5ef',ink:'#008258',width:100,height:94,cover:'/work/culture-cover-2025.png',pages:['/work/culture-06.jpg','/work/culture-13.jpg','/work/culture-17.jpg','/work/culture-24.jpg']},
+{id:'brand',title:'品牌手册',color:'#0739df',ink:'#fff',width:132,height:84,cover:'/work/tob-02.jpg',pages:['/work/tob-06.jpg','/work/tob-14.jpg'],rotated:true},
+{id:'sales',title:'销售手册',color:'#76efd1',ink:'#080b0a',width:98,height:89,cover:'/work/toc-01.jpg',pages:['/work/toc-04.jpg','/work/toc-11.jpg','/work/toc-16.jpg'],rotated:true},
+{id:'partners',title:'招商手册',color:'#ff592b',ink:'#fff',width:82,height:82,pages:[]},
+{id:'recruitment',title:'招聘计划',color:'#effa27',ink:'#090909',width:76,height:97,pages:[]},
+{id:'posters',title:'海报与营销物料',color:'#f58cd0',ink:'#111',width:58,height:82,cover:'/work/promo-board.jpg',pages:['/work/promo-elevator.jpg']}
 ];
-
-export default function Home() {
-  const [activeProject, setActiveProject] = useState(0);
-  const active = projects[activeProject];
-  return <main>
-    <section className="desk" id="top" aria-labelledby="hero-title">
-      <img className="desk-image" src="/concepts/homepage-workdesk-v1.png" alt="徐嘉妮的设计工作台，由品牌手册、简历、小程序与设计物件组成" />
-      <div className="desk-shade" />
-      <header className="site-nav"><a className="site-name" href="#top">JIANI XU</a><nav aria-label="主导航"><a href="#work">作品</a><a href="#about">关于</a><a href="#contact">联系</a></nav></header>
-      <div className="hero-label"><p>PORTFOLIO / 2026</p><h1 id="hero-title">徐嘉妮<br /><span>品牌与产品视觉设计</span></h1></div>
-      <a className="desk-entry desk-entry-work" href="#work"><span>01</span>查看项目</a>
-      <a className="desk-entry desk-entry-about" href="#about"><span>02</span>个人档案</a>
-      <a className="desk-entry desk-entry-contact" href="#contact"><span>03</span>联系我</a>
-      <a className="scroll-note" href="#work">向下浏览 <span>↓</span></a>
-    </section>
-
-    <section className="project-index" id="work">
-      <header className="index-heading"><p>SELECTED WORK / 2023—2026</p><h2>项目书架</h2><span>点击书脊，展开项目档案</span></header>
-      <div className="bookshelf" aria-label="作品项目书架">
-        <div className="shelf-brand"><span>JIANI XU</span><b>VISUAL ARCHIVE</b></div>
-        <div className="book-row">{projects.map((project,index) => <button
-          type="button"
-          className={`book-spine book-spine-${index + 1}${activeProject === index ? ' is-active' : ''}`}
-          style={{background:project.color,color:project.ink}}
-          onClick={() => setActiveProject(index)}
-          aria-pressed={activeProject === index}
-          aria-label={`展开${project.title}`}
-          key={project.id}
-        ><small>{project.number}</small><strong>{project.short}</strong><span>{project.category}</span></button>)}</div>
-        <p className="shelf-hint">SELECT A VOLUME <span>→</span></p>
-      </div>
-
-      <article className="book-open" id={active.id} key={active.id}>
-        <div className="open-images">
-          <figure className="inside-page inside-page-back"><img src={active.pages[1]} alt={`${active.title}内页细节`} /></figure>
-          <figure className="inside-page inside-page-front"><img src={active.pages[0]} alt={`${active.title}内页预览`} /></figure>
-          <figure className="book-cover"><img src={active.cover} alt={`${active.title}封面`} /></figure>
-        </div>
-        <div className="open-copy"><span>{active.number} / SELECTED WORK</span><p>{active.category}</p><h3>{active.title}</h3><em>{active.description}</em><a href="#contact">了解项目详情 <b>↗</b></a></div>
-      </article>
-    </section>
-
-    <section className="about" id="about">
-      <div className="about-kicker"><span>PERSONAL FILE</span><b>05</b></div>
-      <div className="about-copy"><h2>让复杂内容<br />变得清楚、好看，<br />也真正有用。</h2><p>我是徐嘉妮，品牌与产品视觉设计师。我的工作覆盖企业品牌、销售手册、宣传物料、官网与微信小程序，习惯从信息结构出发，把内容转化为有辨识度、能够被使用的视觉系统。</p><div className="about-meta"><span>品牌视觉系统</span><span>编辑与销售内容</span><span>产品视觉</span><span>微信小程序</span><span>AI 辅助创作</span></div></div>
-    </section>
-
-    <footer id="contact"><div><p>CONTACT / AVAILABLE FOR OPPORTUNITIES</p><h2>如果你喜欢我的工作，<br />欢迎和我聊聊。</h2></div><a className="mail" href="mailto:250220669@qq.com">250220669@qq.com <span>↗</span></a><div className="footer-line"><span>徐嘉妮 / JIANI XU</span><span>品牌与产品视觉设计师</span><a href="#top">返回顶部 ↑</a></div></footer>
-  </main>;
+const digital:Work={id:'mini',title:'微信小程序',color:'#90b8e3',ink:'#10151e',width:132,height:84,pages:[]};
+const all=[...works,digital];
+export default function Home(){
+const [selected,setSelected]=useState<string|null>(null);
+const [project,setProject]=useState<Work|null>(null),[category,setCategory]=useState('work'),[hover,setHover]=useState<string|null>(null),[view,setView]=useState('overview'),[active,setActive]=useState<number|null>(null),[position,setPosition]=useState(2),[ratios,setRatios]=useState<Record<string,number>>({}),[reading,setReading]=useState<string|null>(null),[info,setInfo]=useState(false);
+const shelf=useRef<HTMLDivElement>(null),home=useRef<HTMLButtonElement>(null),dialog=useRef<HTMLDialogElement>(null),about=useRef<HTMLDialogElement>(null),wheel=useRef(0),touch=useRef<number|null>(null),drag=useRef<{x:number;scroll:number;moved:boolean}|null>(null);
+const shown=category==='work'?works:[digital];
+const files=project?[project.cover,...project.pages].filter((p):p is string=>!!p):[];
+const slots=Math.max(7,files.length);
+useEffect(()=>{const sync=()=>{const id=location.hash.replace('#project/','');setProject(all.find(p=>p.id===id)??null);setView('overview');setPosition(2);setActive(null);setReading(null);};sync();window.addEventListener('hashchange',sync);return()=>window.removeEventListener('hashchange',sync);},[]);
+useEffect(()=>{if(reading)dialog.current?.showModal();},[reading]);
+useEffect(()=>{if(info)about.current?.showModal();},[info]);
+function open(p:Work){setSelected(old=>old===p.id?null:p.id);setHover(null);}
+function back(){location.hash='work';requestAnimationFrame(()=>home.current?.focus());}
+function move(step:number){setPosition(old=>{const next=Math.max(0,Math.min(slots-1,old+step));setActive(next);return next;});}
+function frame(i:number):CSSProperties {const offset=i-position;return {'--offset':offset,'--ratio':files[i]?(ratios[files[i]]??.75):.75,'--depth':Math.max(.68,1-offset*.065),zIndex:30-i} as CSSProperties;}
+return <main className={project?'portfolio is-project':'portfolio'}>
+<section className="shelf-screen" inert={!!project} aria-hidden={!!project}>
+<header className="home-nav"><button ref={home} onClick={()=>{setCategory('work');shelf.current?.scrollTo({left:0,behavior:'smooth'});}}>JIANI XU</button><button onClick={()=>open(works[0])}>作品集</button></header>
+<div className="home-heading"><h1>设计项目档案</h1><p>SELECTED DESIGN WORKS</p><div className="category-switch" aria-label="作品类型"><button aria-pressed={category==='work'} onClick={()=>{setCategory('work');setHover(null);setSelected(null);}}>在职项目</button><button aria-pressed={category==='digital'} onClick={()=>{setCategory('digital');setHover(null);setSelected(null);}}>数字体验</button></div></div>
+<div ref={shelf} className="shelf-viewport" onWheel={e=>{if(shelf.current&&shelf.current.scrollWidth>shelf.current.clientWidth)shelf.current.scrollLeft+=e.deltaY;}} onPointerDown={e=>{if(e.pointerType==='mouse')drag.current={x:e.clientX,scroll:e.currentTarget.scrollLeft,moved:false};}} onPointerMove={e=>{const d=drag.current;if(d&&e.buttons===1){const dx=e.clientX-d.x;if(Math.abs(dx)>6)d.moved=true;if(d.moved)e.currentTarget.scrollLeft=d.scroll-dx;}}} onPointerUp={()=>{setTimeout(()=>{drag.current=null;},0);}} onPointerLeave={()=>{drag.current=null;}}>
+<div className="book-row" key={category}>{shown.map((p,i)=><div key={p.id} className={`book-slot ${p.id==='posters'?'poster-slot':''} ${(hover??selected)===p.id?'expanded':''}`} style={{'--book-width':`${p.width}px`,'--book-height':`${p.height}%`,'--color':p.color,'--ink':p.ink} as CSSProperties} onMouseEnter={()=>setHover(p.id)} onMouseLeave={()=>setHover(null)}>
+<button className={`spine ${p.rotated?'rotated':''} spine-${p.id}`} onFocus={()=>setHover(p.id)} onBlur={()=>setHover(null)} onClick={e=>{if(drag.current?.moved){e.preventDefault();return;}open(p);}} aria-expanded={(hover??selected)===p.id} aria-label={`${selected===p.id?'收起':'展开'}${p.title}`}>
+<span className="spine-meta"><b>{String(i+1).padStart(2,'0')}</b><i/><small>YUNNA</small></span><strong className="spine-title">{p.title}</strong><span className="spine-mark" aria-hidden="true">{['Ⅲ','✣','◯●','Ⅲ','✱','✣'][i]}</span>{p.id==='posters'&&<span className="paperclip" aria-hidden="true"/>}</button>
+{p.id==='posters'?<div className="poster-fan" aria-hidden="true">{['/work/promo-elevator.jpg','/work/promo-board.jpg'].map((src,n)=><img key={src} src={src} alt="" style={{'--sheet':n} as CSSProperties}/>)}</div>:<div className="book-preview" aria-hidden="true">{p.cover?<img src={p.cover} alt=""/>:<span>{p.title}<small>作品整理中</small></span>}<div className="preview-caption">{p.title}<span>再次点击收起</span></div></div>}
+</div>)}</div></div>
+<div className="shelf-footer"><span>悬停展开 · 点击固定 <b>⟶</b></span><div className="shelf-controls"><button aria-label="向左浏览书架" onClick={()=>shelf.current?.scrollBy({left:-240,behavior:'smooth'})}>←</button><small>滑动浏览</small><button aria-label="向右浏览书架" onClick={()=>shelf.current?.scrollBy({left:240,behavior:'smooth'})}>→</button></div></div></section>
+{project&&<section className={`project-screen ${view==='index'?'index-mode':''}`} aria-label={`${project.title}项目空间`} onKeyDown={e=>{if(reading)return;if(e.key==='Escape')back();if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();move(1);}if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();move(-1);}}}>
+<header className="project-nav"><button onClick={back}>JIANI XU</button><button onClick={back}>Projects</button><button onClick={()=>setView('index')}>Archives</button><button onClick={()=>setInfo(true)}>About</button><a href="mailto:250220669@qq.com">Contact</a></header><button className="back-link" onClick={back}>← 返回书架</button>
+<div className={`project-label ${active!==null?'visible':''}`} aria-live="polite"><h1>云纳{project.title}{active!==null&&active>0&&files[active]?` · 内页 ${active}`:''}</h1><p>云纳 / 2025</p>{active!==null&&!files[active]&&<small>内容整理中</small>}</div>
+<div className="glass-stage" tabIndex={0} aria-label="项目页面，使用左右方向键或滑动浏览" onWheel={e=>{if(view==='index')return;const now=Date.now();if(Math.abs(e.deltaY)+Math.abs(e.deltaX)>8&&now-wheel.current>550){wheel.current=now;move((e.deltaY||e.deltaX)>0?1:-1);}}} onTouchStart={e=>{touch.current=e.touches[0].clientX;}} onTouchEnd={e=>{if(touch.current!==null){const d=touch.current-e.changedTouches[0].clientX;if(Math.abs(d)>35)move(d>0?1:-1);}touch.current=null;}}>
+{Array.from({length:slots},(_,i)=><button key={`${project.id}-${i}`} className={`glass-panel ${active===i?'active':''} ${files[i]?'has-cover':''}`} style={frame(i)} onMouseEnter={()=>setActive(i)} onMouseLeave={()=>setActive(null)} onFocus={()=>setActive(i)} onBlur={()=>setActive(null)} onClick={()=>{setPosition(i);setActive(i);if(files[i])setReading(files[i]);}} aria-label={files[i]?`${i===0?project.title:`内页 ${i}`}，点击放大`:`待整理页面 ${i+1}`}>
+{files[i]&&<img src={files[i]} alt={i===0?project.title:`${project.title}内页 ${i}`} onLoad={e=>{const im=e.currentTarget;setRatios(old=>({...old,[files[i]]:im.naturalWidth/im.naturalHeight}));}}/>}{view==='index'&&<span className="index-caption">{String(i+1).padStart(2,'0')} / {files[i]?i===0?'封面':`内页 ${i}`:'待整理'}</span>}</button>)}
+</div><div className="space-controls"><button aria-label="上一张" disabled={position===0} onClick={()=>move(-1)}>←</button><span>{String(position+1).padStart(2,'0')} / {String(slots).padStart(2,'0')}</span><button aria-label="下一张" disabled={position===slots-1} onClick={()=>move(1)}>→</button></div><div className="view-switch"><button aria-pressed={view==='overview'} onClick={()=>setView('overview')}>项目概览</button><i/><button aria-pressed={view==='index'} onClick={()=>setView('index')}>页面索引</button></div></section>}
+{reading&&<dialog ref={dialog} className="reader" onClose={()=>setReading(null)} onClick={e=>{if(e.target===e.currentTarget)dialog.current?.close();}}><button className="reader-close" onClick={()=>dialog.current?.close()} autoFocus>关闭 ×</button><img src={reading} alt="作品完整页面"/></dialog>}
+{info&&<dialog ref={about} className="about-overlay" onClose={()=>setInfo(false)}><button onClick={()=>about.current?.close()} autoFocus>关闭 ×</button><h2>徐嘉妮 / JIANI XU</h2><p>品牌与产品视觉设计师。工作覆盖企业品牌、销售手册、宣传物料与微信小程序，从信息结构出发，将内容转化为清楚、好看、能够被使用的视觉设计。</p><a href="mailto:250220669@qq.com">250220669@qq.com ↗</a></dialog>}
+</main>;
 }
