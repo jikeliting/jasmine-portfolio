@@ -1,0 +1,81 @@
+.reader{min-height:100svh;background:#fafcfd;color:#111820;font-family:Arial,'Microsoft YaHei','PingFang SC',sans-serif;font-weight:400}.reader button,.reader a{transition:color .18s,background .18s,box-shadow .18s}.reader button:hover,.reader a:hover{color:#276a9d}.reader :focus-visible{outline:2px solid #327bb3;outline-offset:5px}.header{height:76px;position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 2.8vw;background:#ffffffed;border-bottom:1px solid #cbd4dc;backdrop-filter:blur(12px)}.logo{font-size:25px;letter-spacing:-.04em}.header nav{display:flex;gap:42px;align-items:center;font-size:16px}.header button{padding:10px 0}.layout{display:grid;grid-template-columns:28% 72%;align-items:start}.info{position:sticky;top:76px;max-height:calc(100svh - 76px);overflow-y:auto;padding:48px 2.9vw 36px;background:linear-gradient(160deg,#eef8fc 0%,#fff 44%);scrollbar-width:thin}.back{display:inline-block;font-size:15px;color:#5a6978;margin-bottom:42px}.info h1{font-size:clamp(26px,2.75vw,46px);letter-spacing:-.04em;line-height:1.38;font-weight:650}.english{font-size:clamp(11px,1.16vw,19px);color:#8796a7;line-height:1.6;margin-top:12px;letter-spacing:.025em}.info h2{font-size:20px;font-weight:600;border-bottom:1px solid #b9c9d5;padding-bottom:16px}.meta{margin-top:48px}.meta dl{margin:22px 0 0}.meta dl div{display:grid;grid-template-columns:30% 70%;gap:6px;padding:10px 0;font-size:clamp(12px,1vw,16px);line-height:1.7}.meta dt{color:#7b8794}.meta dd{margin:0;color:#35404c}.overview{margin-top:44px}.overview p{font-size:clamp(13px,1vw,16px);line-height:2.1;color:#414c59;margin-top:22px}.skip{display:inline-block;margin-top:28px;color:#356c95;font-size:13px}.manual{min-width:0;min-height:calc(100svh - 76px);padding:30px 4vw 64px;background:linear-gradient(180deg,#dceff9 0,#edf7fc 650px,#fbfdfe 1600px);scroll-margin-top:96px}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:42px}.toolbar>div{display:flex;align-items:center;gap:24px}.toolbar h2{font-size:20px;font-weight:550}.toolbar>div>span{font-size:14px;color:#8496a8;border-left:1px solid #acc3d4;padding-left:22px}.toolbar>button{font-size:13px;color:#5c7891;border:1px solid #b5cfdf;border-radius:5px;padding:8px 12px;font-variant-numeric:tabular-nums;background:#ffffff85;white-space:nowrap}.toolbar>button>span{margin-left:10px}.note{font-size:12px;color:#607c91;margin:8px 0 22px}.pages{display:grid;gap:26px}.figure{margin:0;scroll-margin-top:100px}.pageButton{position:relative;display:block;padding:0;width:100%;background:white;box-shadow:0 4px 18px #325b7612;cursor:zoom-in;text-align:left}.pageButton img{width:100%;height:auto;display:block}.pageButton:hover{box-shadow:0 8px 28px #325b7627}.expand{position:absolute;right:20px;top:18px;display:grid;place-items:center;border-radius:50%;width:36px;height:36px;font-size:25px;color:#426078;background:#ffffffe6;transition:transform .2s}.pageButton:hover .expand{transform:scale(1.1)}.figure figcaption{display:flex;justify-content:space-between;font-size:12px;color:#7790a5;margin-top:12px;padding:0 2px}.figure figcaption>span:last-child{opacity:0;transition:opacity .2s}.figure:hover figcaption>span:last-child,.figure:focus-within figcaption>span:last-child{opacity:1}.index{position:fixed;right:4vw;top:139px;z-index:30;background:#fffffff5;border:1px solid #c9dce8;box-shadow:0 16px 50px #2b4c6422;border-radius:8px;padding:16px;width:min(330px,90vw);backdrop-filter:blur(12px)}.index>div{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;font-size:14px}.index>div button{font-size:24px}.index>button{display:flex;gap:14px;width:100%;text-align:left;font-size:13px;padding:14px 8px;border-top:1px solid #e5edf3}.index>button>span:last-child{margin-left:auto}.index>button[aria-current=page]{background:#eaf5fc;color:#286798}.end{margin-top:54px;padding-top:30px;border-top:1px solid #d2e1eb;font-size:14px;color:#738a9b;text-align:center}.end>div{display:flex;justify-content:center;gap:28px;margin-top:20px}.end button,.end a{padding:12px 18px;border:1px solid #baceDC;border-radius:4px;color:#365c79}.error{padding:60px;background:#fff;color:#54697a;display:flex;gap:20px;align-items:center}.error a,.error button{text-decoration:underline}.dialog{position:fixed;inset:0;margin:auto;width:96vw;max-width:1800px;height:94svh;max-height:94svh;border:1px solid #c9dae6;border-radius:10px;padding:0;background:#f1f7fb;color:#243a4c;box-shadow:0 24px 90px #183d4d33;overflow:hidden}.dialog::backdrop{background:#203a4f99;backdrop-filter:blur(10px)}.dialogBar{height:65px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid #d6e3ed;gap:15px;background:#fff}.dialogBar>span{font-size:14px}.dialogBar small{margin-left:18px;color:#8b9bab}.dialogBar>div{display:flex;gap:18px}.dialogBar button{padding:10px;font-size:14px}.lightbox{height:calc(100% - 125px);overflow:auto;display:flex;align-items:center;justify-content:center;padding:24px;overscroll-behavior:contain;touch-action:pan-x pan-y pinch-zoom}.lightbox img{display:block;max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 4px 24px #284e6622}.zoomed{display:block}.zoomed img{width:150%;max-width:none;max-height:none;height:auto}.dialogBottom{height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#fff;border-top:1px solid #d6e3ed}.dialogBottom button{padding:10px 16px;font-size:14px}.dialogBottom>span{font-size:12px;color:#8b9baa}.sr{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.pageButton img{aspect-ratio:16/9;object-fit:contain}.index{max-height:calc(100svh - 165px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+@media(min-width:1500px){.info{padding-top:52px}.meta{margin-top:54px}.overview{margin-top:56px}}
+@media(max-width:900px){.layout{grid-template-columns:34% 66%}.info{padding:30px 22px}.manual{padding:24px}.toolbar>div>span{display:none}.header nav{gap:24px}.info h1{font-size:28px}.meta dl div{display:block}.meta dd{margin-top:3px}.overview{margin-top:28px}}
+@media(max-width:640px){.header{height:64px;padding:0 20px}.logo{font-size:21px}.header nav{gap:18px;font-size:12px}.header nav>a:last-child{display:none}.layout{display:block}.info{position:static;max-height:none;padding:28px 24px 32px;overflow:visible}.back{margin-bottom:24px;font-size:14px}.info h1{font-size:33px}.english{font-size:12px}.meta{margin-top:32px}.info h2{font-size:18px;padding-bottom:12px}.meta dl{margin-top:12px}.meta dl div{display:grid;grid-template-columns:30% 70%;font-size:14px;padding:7px 0}.meta dd{margin:0}.overview{margin-top:28px}.overview p{font-size:14px;margin-top:16px}.manual{padding:24px 16px 40px;scroll-margin-top:64px}.toolbar h2{font-size:18px}.note{margin-bottom:18px}.expand{right:10px;top:10px;width:30px;height:30px;font-size:20px}.pages{gap:24px}.figure{scroll-margin-top:82px}.figure figcaption{font-size:11px}.figure figcaption>span:last-child{opacity:1}.index{top:76px;right:16px}.dialog{width:100vw;height:100svh;max-height:100svh;border-radius:0;max-width:100vw}.dialogBar{padding:0 12px}.dialogBar small{display:none}.dialogBar>div{gap:4px}.dialogBar button{font-size:12px}.dialogBottom{padding:0 10px}.dialogBottom>span{display:none}.lightbox{padding:12px}.error{padding:32px 16px;flex-wrap:wrap;font-size:13px}}
+@media(prefers-reduced-motion:reduce){.reader *{scroll-behavior:auto!important;transition:none!important}}
+
+/* Brand manual: the interface borrows the manual cover's black shell and red light,
+   while the actual pages keep their original artwork and colour. */
+.brandTheme{background:#f7f6f4;color:#171718}
+.brandTheme button:hover,.brandTheme a:hover{color:#a61f28}
+.brandTheme :focus-visible{outline-color:#a61f28}
+.brandTheme .header{background:#fbfaf8ed;border-bottom-color:#d7d2cd;color:#181719}
+.brandTheme .header a,.brandTheme .header button{color:#393638}
+.brandTheme .logo{color:#111}
+.brandTheme .info{background:#fbfaf8;border-right:1px solid #d8d3ce;scrollbar-color:#b42a32 #eeeae6}
+.brandTheme .back{color:#6f6866}
+.brandTheme .english{color:#9c3137}
+.brandTheme .info h1{color:#111;letter-spacing:-.055em}
+.brandTheme .info h2{border-bottom-color:#cfc8c2}
+.brandTheme .meta dt{color:#8d8581}
+.brandTheme .meta dd{color:#2c292a}
+.brandTheme .overview p{color:#5c5653}
+.brandTheme .skip{color:#a61f28}
+.brandTheme .manual{background:radial-gradient(circle at 48% 0%,#f8e9e8 0,#f4f1ee 34%,#ebe8e4 100%);border-left:8px solid #171719}
+.brandTheme .toolbar h2{color:#171719}
+.brandTheme .toolbar>div>span{color:#837b77;border-left-color:#bdb4ae}
+.brandTheme .toolbar>button{color:#6f2026;border-color:#c9a2a4;background:#fffaf9c7}
+.brandTheme .note{color:#8b7c78}
+.brandTheme .pageButton{background:#fff;box-shadow:0 12px 38px #28151712,0 0 0 1px #d6cfca}
+.brandTheme .pageButton:hover{box-shadow:0 18px 50px #28151721,0 0 0 1px #a92b3394}
+.brandTheme .expand{color:#fff;background:#1a1819e8;border:1px solid #a32931}
+.brandTheme .figure figcaption{color:#786e69}
+.brandTheme .figure figcaption>span:first-child::first-letter{color:#a61f28}
+.brandTheme .index{background:#fffdfbf5;border-color:#cdb8b6;box-shadow:0 18px 60px #3a171b24;color:#1c191a}
+.brandTheme .index>button{border-top-color:#e5dfda;color:#554e4b}
+.brandTheme .index>button[aria-current=page]{background:#9f222a;color:#fff}
+.brandTheme .end{border-top-color:#d1c8c3;color:#817570}
+.brandTheme .end button,.brandTheme .end a{border-color:#b88789;color:#7f1e25;background:#fffaf9}
+.brandTheme .dialog{background:#f4f1ee;color:#242021;border-color:#9e3b41;box-shadow:0 28px 100px #27101259}
+.brandTheme .dialog::backdrop{background:#130a0bc2;backdrop-filter:blur(12px)}
+.brandTheme .dialogBar,.brandTheme .dialogBottom{background:#fffdfb;border-color:#d7ceca}
+.brandTheme .dialogBar small,.brandTheme .dialogBottom>span{color:#897d78}
+.brandTheme .lightbox{background:radial-gradient(circle at 50% 8%,#f9eeee 0,#e7e2de 72%)}
+.brandTheme .lightbox img{box-shadow:0 16px 50px #2a11152b}
+
+/* Sales manual: a neutral white gallery so product pages remain the only colour. */
+.salesTheme{background:#fff;color:#171717}
+.salesTheme button:hover,.salesTheme a:hover{color:#111}
+.salesTheme :focus-visible{outline-color:#555}
+.salesTheme .header{background:#fffffff2;border-bottom-color:#dedede;color:#171717}
+.salesTheme .header a,.salesTheme .header button{color:#333}
+.salesTheme .info{background:#fff;border-right:1px solid #dedede;scrollbar-color:#aaa #f2f2f2}
+.salesTheme .back{color:#696969}
+.salesTheme .english{color:#8b8b8b}
+.salesTheme .info h1{color:#111;letter-spacing:-.055em}
+.salesTheme .info h2{border-bottom-color:#d7d7d7}
+.salesTheme .meta dt{color:#8a8a8a}
+.salesTheme .meta dd{color:#2b2b2b}
+.salesTheme .overview p{color:#595959}
+.salesTheme .skip{color:#333;border-bottom:1px solid #bbb;padding-bottom:4px}
+.salesTheme .manual{background:#f3f3f1;border-left:1px solid #dedede}
+.salesTheme .toolbar h2{color:#171717}
+.salesTheme .toolbar>div>span{color:#858585;border-left-color:#c6c6c6}
+.salesTheme .toolbar>button{color:#444;border-color:#c9c9c9;background:#ffffffd9}
+.salesTheme .note{color:#888}
+.salesTheme .pageButton{background:#fff;box-shadow:0 10px 36px #0000000f,0 0 0 1px #d9d9d9}
+.salesTheme .pageButton:hover{box-shadow:0 18px 48px #0000001c,0 0 0 1px #999}
+.salesTheme .expand{color:#fff;background:#191919e8;border:1px solid #555}
+.salesTheme .figure figcaption{color:#777}
+.salesTheme .index{background:#fffffff7;border-color:#d2d2d2;box-shadow:0 18px 60px #0000001c;color:#191919}
+.salesTheme .index>button{border-top-color:#e7e7e7;color:#555}
+.salesTheme .index>button[aria-current=page]{background:#181818;color:#fff}
+.salesTheme .end{border-top-color:#d2d2d2;color:#777}
+.salesTheme .end button,.salesTheme .end a{border-color:#aaa;color:#272727;background:#fff}
+.salesTheme .dialog{background:#f2f2f0;color:#222;border-color:#aaa;box-shadow:0 28px 100px #00000040}
+.salesTheme .dialog::backdrop{background:#191919bd;backdrop-filter:blur(12px)}
+.salesTheme .dialogBar,.salesTheme .dialogBottom{background:#fff;border-color:#d7d7d7}
+.salesTheme .dialogBar small,.salesTheme .dialogBottom>span{color:#888}
+.salesTheme .lightbox{background:#ececea}
+.salesTheme .lightbox img{box-shadow:0 16px 50px #00000021}
