@@ -46,7 +46,7 @@ export default function DigitalPage() {
         <button className={styles.playButton} onClick={start}>播放录屏 <span aria-hidden="true">↗</span></button>
       </aside>
       <section className={styles.stage} aria-label={mini ? '微信小程序操作录屏' : '网站操作录屏'}>
-        <div className={styles.stageHeader}><div><span>{mini ? 'INTERFACE / 01' : 'WEBSITE / 02'}</span><h2>{mini ? '小程序体验全览' : '网站体验全览'}</h2></div><span>{mini ? '00:28 · 竖屏录制' : '网站操作录屏 · 横屏'}</span></div>
+        <div className={styles.stageHeader}><div><span>{mini ? 'INTERFACE / 01' : 'WEBSITE / 02'}</span><h2>{mini ? '小程序体验全览' : '网站体验全览'}</h2></div><span>{mini ? '00:28 · 竖屏录制' : '00:57 · 横屏录制'}</span></div>
         <div className={styles.display}>
           {mini ? <><div className={styles.phone}>
             <video ref={miniProgramVideo} controls playsInline preload="metadata" poster="/work/digital/mini-program-cover.jpg" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} aria-label="云纳微信小程序操作录屏">
