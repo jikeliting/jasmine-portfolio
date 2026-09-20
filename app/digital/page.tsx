@@ -9,11 +9,23 @@ export default function DigitalPage() {
   const [playing, setPlaying] = useState(false);
   const [project, setProject] = useState<'mini' | 'website'>('mini');
 
-  useEffect(() => { document.title = '数字产品体验 — JIANI XU'; }, []);
+  useEffect(() => {
+    document.title = '数字产品体验 — JIANI XU';
+    const syncFromUrl = () => setProject(location.hash === '#website' ? 'website' : 'mini');
+    syncFromUrl();
+    window.addEventListener('hashchange', syncFromUrl);
+    return () => window.removeEventListener('hashchange', syncFromUrl);
+  }, []);
 
   function start() {
     const target = project === 'mini' ? miniProgramVideo.current : websiteVideo.current;
     target?.play().catch(() => { /* Native controls remain available. */ });
+  }
+
+  function selectProject(next: 'mini' | 'website') {
+    setPlaying(false);
+    setProject(next);
+    history.replaceState(null, '', `#${next}`);
   }
 
   const mini = project === 'mini';
@@ -33,8 +45,8 @@ export default function DigitalPage() {
         <a className={styles.back} href="/#work">← 返回项目首页</a>
         <p className={styles.kicker}>04 / DIGITAL EXPERIENCE</p>
         <div className={styles.projectTabs} role="tablist" aria-label="数字体验项目">
-          <button role="tab" aria-selected={mini} onClick={() => { setProject('mini'); setPlaying(false); }}>01 小程序</button>
-          <button role="tab" aria-selected={!mini} onClick={() => { setProject('website'); setPlaying(false); }}>02 网站</button>
+          <button role="tab" aria-selected={mini} onClick={() => selectProject('mini')}>01 小程序设计</button>
+          <button role="tab" aria-selected={!mini} onClick={() => selectProject('website')}>02 网站设计</button>
         </div>
         <h1>{title}</h1>
         <p className={styles.subtitle}>{subtitle}</p>
@@ -47,19 +59,18 @@ export default function DigitalPage() {
       </aside>
       <section className={styles.stage} aria-label={mini ? '微信小程序操作录屏' : '网站操作录屏'}>
         <div className={styles.stageHeader}><div><span>{mini ? 'INTERFACE / 01' : 'WEBSITE / 02'}</span><h2>{mini ? '小程序体验全览' : '网站体验全览'}</h2></div><span>{mini ? '00:28 · 竖屏录制' : '00:57 · 横屏录制'}</span></div>
-        <div className={styles.display}>
+        <div className={`${styles.display} ${mini ? '' : styles.displayWebsite}`}>
           {mini ? <><div className={styles.phone}>
             <video ref={miniProgramVideo} controls playsInline preload="metadata" poster="/work/digital/mini-program-cover.jpg" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} aria-label="云纳微信小程序操作录屏">
               <source src="/work/digital/mini-program-tour.mp4" type="video/mp4" />
               你的浏览器暂不支持播放此视频。
             </video>
           </div><div className={styles.stageText}><span className={styles.dot} /> <span>{playing ? '正在播放' : '点击播放，探索界面'}</span><p>从品牌呈现到产品浏览，<br />沿着真实操作路径观看。</p></div></> : <><div className={styles.laptop}>
-            <div className={styles.camera} aria-hidden="true" />
             <div className={styles.laptopScreen}><video ref={websiteVideo} controls playsInline preload="metadata" poster="/work/digital/website-cover.jpg" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} aria-label="云纳官网操作录屏">
               <source src="/work/digital/website-tour-h264.mp4" type="video/mp4" />
               你的浏览器暂不支持播放此视频。
-            </video></div><div className={styles.laptopBase} aria-hidden="true" />
-          </div><div className={styles.stageText}><span className={styles.dot} /> <span>{playing ? '正在播放' : '点击播放，浏览网站'}</span><p>从品牌内容到交互细节，<br />完整呈现网页体验。</p></div></>}
+            </video></div><img className={styles.laptopFrame} src="/work/digital/laptop-frame.png" alt="" aria-hidden="true" />
+          </div><div className={`${styles.stageText} ${styles.websiteStageText}`}><span className={styles.dot} /> <span>{playing ? '正在播放' : '点击播放，浏览网站'}</span><p>从品牌内容到交互细节，完整呈现网页体验。</p></div></>}
         </div>
         <footer className={styles.footer}><span>JIANI XU / PORTFOLIO</span><a href="/#work">返回书架 ↑</a></footer>
       </section>
