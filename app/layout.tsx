@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://jiani-xu-portfolio.jikeliting.chatgpt.site'),
+  metadataBase: new URL('https://jianiart.xyz'),
   title: '徐嘉妮｜品牌与产品视觉设计',
   description: '徐嘉妮的个人设计作品集，涵盖企业品牌、销售内容、产品视觉与数字体验。',
   icons: { icon: '/favicon.svg' },

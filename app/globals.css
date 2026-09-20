@@ -8,3 +8,10 @@
 .poster-fan img{transform:translateX(calc(54px + var(--sheet)*8px)) scaleX(.055)}
 .spine:active{filter:brightness(.9)}
 .shelf-viewport{cursor:grab}.shelf-viewport:active{cursor:grabbing}
+.poster-project .glass-panel{background:#f8f9fb;border-color:#cad4dc;box-shadow:0 16px 34px #364e6b29}
+.poster-project .glass-panel img{opacity:.44;object-fit:cover;object-position:top center;filter:saturate(.75)}
+.poster-project .glass-panel.active{border-color:#6698b2;background:#fff;box-shadow:0 24px 55px #365d7a4d}
+.poster-project .glass-panel.active img{opacity:1;filter:none}
+.poster-project .glass-stage::after{content:'滑动切换 · 点击当前作品放大';position:absolute;bottom:86px;left:50%;transform:translateX(-50%);color:#80919b;font-size:12px;letter-spacing:.08em;white-space:nowrap;pointer-events:none}
+.poster-project.index-mode .glass-stage::after{display:none}
+@media(max-width:760px){.poster-project .glass-stage::after{bottom:95px;font-size:11px}.poster-project .project-label{top:116px}}

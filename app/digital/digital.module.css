@@ -1,0 +1,29 @@
+.page{min-height:100svh;background:#f8fafb;color:#17242a;font-family:Arial,'Microsoft YaHei','PingFang SC',sans-serif}
+.page *{box-sizing:border-box}
+.header{height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(22px,3vw,52px);border-bottom:1px solid #d9e3e8;background:#ffffffd9}
+.logo{font-size:22px;letter-spacing:.11em;font-weight:500}
+.header nav{display:flex;gap:36px;font-size:15px}
+.header a:hover,.back:hover,.footer a:hover{color:#3785b2}
+.layout{display:grid;grid-template-columns:minmax(340px,34%) minmax(0,1fr);min-height:calc(100svh - 78px)}
+.info{padding:clamp(32px,4vw,70px) clamp(28px,4vw,72px);background:linear-gradient(150deg,#fff 38%,#eaf5f8 100%);border-right:1px solid #d9e3e8}
+.back{display:inline-block;font-size:14px;margin-bottom:clamp(52px,8vh,100px)}
+.kicker{font-size:12px;letter-spacing:.2em;color:#6792a7;margin:0 0 16px}
+.info h1{font-size:clamp(42px,4.5vw,72px);line-height:1.08;letter-spacing:-.07em;font-weight:600;margin:0 0 18px}
+.subtitle{font-size:17px;color:#667982;margin:0}
+.rule{height:1px;background:#c9d8df;margin:46px 0 34px}
+.info h2{font-size:19px;font-weight:600;margin:36px 0 19px}
+.info dl{margin:0}.info dl div{display:grid;grid-template-columns:95px 1fr;gap:16px;margin:13px 0;font-size:15px}.info dt{color:#8599a2}.info dd{margin:0}
+.description{font-size:15px;line-height:1.9;color:#62747c;max-width:440px}
+.playButton{border:1px solid #5e8da3;border-radius:4px;padding:14px 20px;min-width:190px;display:flex;justify-content:space-between;gap:30px;margin-top:30px;color:#255c77;background:#fff;transition:background .2s,transform .2s}
+.playButton:hover{background:#e6f2f7;transform:translateY(-2px)}
+.stage{display:flex;flex-direction:column;min-width:0;background:radial-gradient(circle at 53% 26%,#e4f3f7 0,#edf5f7 28%,#f8fafb 72%);padding:clamp(28px,3vw,54px) clamp(25px,4vw,72px) 24px}
+.stageHeader{display:flex;justify-content:space-between;gap:18px;align-items:end}.stageHeader div>span,.stageHeader>span{font-size:11px;letter-spacing:.16em;color:#8caab8}.stageHeader h2{font-size:23px;font-weight:500;margin:8px 0 0}
+.display{flex:1;min-height:690px;display:flex;justify-content:center;align-items:center;gap:clamp(35px,6vw,130px)}
+.phone{position:relative;padding:9px;border:1px solid #cadae0;border-radius:40px;background:#d9e4e8;box-shadow:0 20px 60px #64869633,0 2px 4px #49758a1a;transform:rotate(-2deg)}
+.phone::before{content:'';position:absolute;top:13px;left:50%;transform:translateX(-50%);width:26%;height:12px;border-radius:0 0 11px 11px;background:#18252b;z-index:2;pointer-events:none}
+.phone video{display:block;width:clamp(230px,22vw,330px);aspect-ratio:428 / 786;object-fit:cover;background:#111;border-radius:31px}
+.stageText{max-width:290px;color:#5d7987;font-size:14px;letter-spacing:.06em}.stageText p{font-size:clamp(20px,2vw,28px);letter-spacing:0;line-height:1.55;color:#1c343f;margin:25px 0 0}.dot{display:inline-block;background:#98cbd8;width:8px;height:8px;border-radius:50%;margin-right:10px}
+.footer{border-top:1px solid #d9e3e8;padding-top:18px;display:flex;justify-content:space-between;gap:20px;color:#8ba4ae;font-size:11px;letter-spacing:.14em}.footer a{color:#476d7e;letter-spacing:0;font-size:13px}
+@media(max-width:850px){.layout{display:block}.info{border-right:0;border-bottom:1px solid #d9e3e8;padding:30px 26px 45px}.back{margin-bottom:46px}.info h1{font-size:54px}.rule{margin:32px 0}.stage{min-height:850px}.display{min-height:690px}.stageText{display:none}.phone video{width:min(64vw,330px)}}
+@media(max-width:520px){.header{height:65px}.logo{font-size:18px}.header nav{gap:18px;font-size:13px}.info h1{font-size:48px}.stage{padding:24px 18px 20px;min-height:720px}.stageHeader h2{font-size:19px}.stageHeader>span{font-size:10px;text-align:right}.display{min-height:600px}.phone video{width:min(72vw,310px)}}
+@media(prefers-reduced-motion:reduce){.playButton{transition:none}}
