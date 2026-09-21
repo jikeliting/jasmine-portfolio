@@ -20,10 +20,10 @@
 .label b{opacity:1;margin-left:auto;display:block}
 .label small{font-size:12px;color:#61727b}
 .cultureBook{left:14%;bottom:65px;width:72%;height:185px;aspect-ratio:auto}
-.cultureBook img{object-fit:contain;background:#fff}
+.cultureBook img{object-fit:cover;background:transparent}
 .pair{left:17%;bottom:62px;width:66%;height:205px;gap:9%}
 .darkBook,.whiteBook{width:45%;height:100%}
-.book img{object-fit:contain;background:#fff}
+.book img{object-fit:cover;background:transparent}
 .hint{opacity:1;transform:translate(-50%,0);bottom:7px;padding:5px 8px;font-size:11px}
 .action{position:absolute;bottom:14px;left:16px;right:16px;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:40px;padding:10px 12px;background:#fffffff2;border-radius:6px;color:#284b59;font-size:13px;text-align:left}
 .action>span{font-size:11px;color:#5c7079}
@@ -45,13 +45,15 @@
 .posterGallery img{width:100%;height:240px;object-fit:contain;background:#e7edf0}
 .posterGallery span{display:block;font-size:13px;margin-top:10px}
 .sales .pair{left:4%;width:92%;height:190px;gap:4%;align-items:flex-end}
-.sales .darkBook,.sales .whiteBook{width:30%;height:100%}
-.sales .partnersBook{width:32%;height:auto;aspect-ratio:16/9;margin-bottom:8px;transform:perspective(1000px) rotateY(-6deg) rotate(2deg)}
+.sales .darkBook{width:24%;height:auto;aspect-ratio:932/1203}
+.sales .whiteBook{width:34%;height:auto;aspect-ratio:1404/993}
+.sales .partnersBook{width:36%;height:auto;aspect-ratio:16/9;margin-bottom:8px;transform:perspective(1000px) rotateY(-6deg) rotate(2deg)}
 .sales .partnersBook img{object-fit:cover}
 .sales .hint{font-size:10px;white-space:nowrap}
 .digitalPreview{display:grid;grid-template-columns:43% 1fr;align-items:center;gap:12px;padding:12px 14px}
 .phoneMock{display:block;height:100%;min-height:0;overflow:hidden;border:4px solid #263b51;border-radius:15px;background:#d4dfe8;box-shadow:3px 8px 14px #36527334}
 .phoneMock img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.devicePair{position:relative;display:block;height:100%;min-width:0}.devicePair .phoneMock{position:absolute;z-index:1;left:0;top:0;width:47%;height:100%}.laptopMock{position:absolute;z-index:2;left:27%;top:29%;width:76%;aspect-ratio:1586/992;filter:drop-shadow(3px 7px 8px #21394442)}.laptopCover{position:absolute;left:8.1%;top:10%;width:83.8%;height:78.5%;object-fit:cover;background:#111}.laptopShell{position:absolute;z-index:2;inset:0;width:100%;height:100%;object-fit:fill}
 .digitalCopy{display:flex;flex-direction:column;gap:12px;min-width:0}
 .digitalCopy small{font-size:10px;letter-spacing:.12em;color:#697b93}
 .digitalCopy strong{font-size:clamp(17px,1.45vw,25px);font-weight:500;line-height:1.35}
@@ -62,8 +64,19 @@
 .digitalNav{position:absolute;z-index:3;left:16px;right:16px;bottom:16px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .digitalNav a{display:flex;align-items:center;justify-content:space-between;gap:6px;min-height:38px;padding:8px 11px;border:1px solid #fff;border-radius:6px;background:#fffffff0;color:#284b59;font-size:clamp(12px,.85vw,14px);transition:background .2s,transform .2s}
 .digitalNav a span{color:#648697}.digitalNav a:hover,.digitalNav a:focus-visible{background:#fff;transform:translateY(-2px)}
-.digital .digitalPreview{height:169px;margin:0 2px;padding:10px 12px;gap:10px;grid-template-columns:40% 1fr}
+.digital .digitalPreview{height:169px;margin:0 2px;padding:10px 12px;gap:10px;grid-template-columns:56% 1fr}
 .digital .digitalCopy{gap:8px}.digital .digitalCopy strong{font-size:clamp(16px,1.3vw,22px)}
 .digital .digitalPreview:hover,.digital .digitalPreview:focus-visible{transform:translateY(-3px)}
-@media(max-width:1050px) and (min-width:701px){.digitalNav{left:10px;right:10px;bottom:10px;gap:4px}.digitalNav a{padding:7px 6px;font-size:11px}.digital .digitalPreview{height:172px;padding:8px}.digital .digitalCopy strong{font-size:17px}}
+@media(max-width:1050px) and (min-width:701px){.digitalNav{left:10px;right:10px;bottom:10px;gap:4px}.digitalNav a{padding:7px 6px;font-size:11px}.digital .digitalPreview{height:172px;padding:8px}.digital .digitalCopy strong{font-size:15px}.digital .digitalCopy small{font-size:8px}.digital .digitalCopy>span{font-size:9px}}
 @media(max-width:700px){.digital .digitalPreview{height:208px;margin-top:12px}.digitalNav a{font-size:14px}}
+.cultureBook{height:auto;aspect-ratio:16/9}
+.sales .pair{position:absolute;top:88px;bottom:66px;left:6%;width:88%;height:auto;display:block;margin:0;overflow:visible;perspective:900px}
+.sales .darkBook,.sales .whiteBook,.sales .partnersBook{position:absolute;top:auto;height:auto;margin:0;transform-origin:50% 100%;filter:drop-shadow(3px 8px 5px #16323e35)}
+.sales .darkBook{z-index:1;left:3%;bottom:10px;width:37%;max-width:128px;transform:rotate(-5deg) rotateY(-7deg)}
+.sales .whiteBook{z-index:2;left:26%;bottom:5px;width:49%;transform:rotate(-2deg) rotateY(-5deg)}
+.sales .partnersBook{z-index:3;left:auto;right:0;bottom:0;width:45%;transform:rotate(3deg) rotateY(-4deg)}
+.sales .book img{box-shadow:2px 0 #fff,4px 1px #bbc6c8,6px 2px #edf0ee,0 3px #d3d9d8}
+.sales .book:hover,.sales .book:focus-visible{z-index:5;transform:translateY(-8px) rotate(0);filter:drop-shadow(4px 12px 8px #16323e40)}
+.sales .darkBook .hint{left:7px;transform:none;font-size:9px;padding:5px}
+@media(max-width:1050px) and (min-width:701px){.cultureBook{height:auto;aspect-ratio:16/9}.sales .pair{top:78px;bottom:76px;left:5%;width:90%}}
+@media(max-width:700px){.cultureBook{height:auto;aspect-ratio:16/9}.sales .pair{top:90px;bottom:76px;left:6%;width:88%;height:auto}}
