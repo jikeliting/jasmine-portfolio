@@ -1,0 +1,7 @@
+tmp/
+dev-preview.log
+dev-preview-error.log
+.wrangler/
+.vinext/
+dist/
+public/work/sales-materials/*-prompt.txt

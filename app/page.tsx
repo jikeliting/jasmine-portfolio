@@ -1,1 +1,1 @@
-export { default } from './home-scene';
+export { default } from './dream-preview/page';

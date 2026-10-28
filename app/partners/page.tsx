@@ -1,4 +1,5 @@
 'use client';
+import PortfolioImage from '../portfolio-image';
 
 import { useEffect, useRef, useState } from 'react';
 import styles from '../culture/reader.module.css';
@@ -64,17 +65,10 @@ export default function PartnersReader() {
   }
 
   return <main className={`${styles.reader} ${styles.partnersTheme}`}>
-    <header className={styles.header}>
-      <a className={styles.logo} href="/#work">JIANI XU</a>
-      <nav aria-label="主导航">
-        <a href="/#work">Projects</a>
-        <button onClick={() => setIndexOpen(value => !value)} aria-expanded={indexOpen} aria-controls="partners-page-index">页面索引</button>
-        <a href="mailto:250220669@qq.com">Contact</a>
-      </nav>
-    </header>
+    <div className="site-nav-spacer" aria-hidden="true" />
     <div className={styles.layout}>
       <aside className={styles.info}>
-        <a className={styles.back} href="/#work">← 返回项目</a>
+        <a className={styles.back} href="/work">← 返回项目</a>
         <h1>云纳<br />招商手册</h1>
         <p className={styles.english}>YUNNA PARTNERSHIP MANUAL</p>
         <section className={styles.meta}><h2>基本信息</h2><dl>
@@ -91,14 +85,14 @@ export default function PartnersReader() {
         <p className={styles.note}>完整手册 · 共 {pages.length} 页</p>
         {indexOpen && <nav id="partners-page-index" className={styles.index} aria-label="页面索引"><div><strong>跳转页面</strong><button onClick={() => setIndexOpen(false)} aria-label="关闭页面索引">×</button></div>{pages.map((page, index) => <button key={page.src} onClick={() => jump(index)} aria-current={current === index ? 'page' : undefined}><span>{String(index + 1).padStart(2, '0')}</span>{page.label}<span>↗</span></button>)}</nav>}
         <div className={styles.pages}>{pages.map((page, index) => <figure data-index={index} ref={element => { figures.current[index] = element; }} key={page.src} className={styles.figure}>
-          {failed[index] ? <div className={styles.error}>此页暂时未能加载。<a href={page.src} target="_blank" rel="noreferrer">打开原图 ↗</a><button onClick={() => setFailed(old => ({ ...old, [index]: false }))}>重试</button></div> : <button className={styles.pageButton} onClick={event => open(index, event.currentTarget)} aria-label={`放大查看${page.label}`}><img src={page.src} alt={`云纳招商手册 — ${page.label}`} loading={index < 2 ? 'eager' : 'lazy'} decoding="async" onError={() => setFailed(old => ({ ...old, [index]: true }))} /><span className={styles.expand} aria-hidden="true">⤢</span></button>}
+          {failed[index] ? <div className={styles.error}>此页暂时未能加载。<a href={page.src} target="_blank" rel="noreferrer">打开原图 ↗</a><button onClick={() => setFailed(old => ({ ...old, [index]: false }))}>重试</button></div> : <button className={styles.pageButton} onClick={event => open(index, event.currentTarget)} aria-label={`放大查看${page.label}`}><PortfolioImage src={page.src} alt={`云纳招商手册 — ${page.label}`} loading={index < 2 ? 'eager' : 'lazy'} decoding="async" onError={() => setFailed(old => ({ ...old, [index]: true }))} /><span className={styles.expand} aria-hidden="true">⤢</span></button>}
           <figcaption><span>{String(index + 1).padStart(2, '0')} / {page.label}</span><span>点击放大</span></figcaption>
         </figure>)}</div>
-        <footer className={styles.end}><p>已浏览完整手册</p><div><button onClick={() => jump(0)}>回到封面 ↑</button><a href="/#work">返回项目 ↗</a></div></footer>
+        <footer className={styles.end}><p>已浏览完整手册</p><div><button onClick={() => jump(0)}>回到封面 ↑</button><a href="/work">返回项目 ↗</a></div></footer>
       </section>
     </div>
     <dialog ref={dialog} className={styles.dialog} aria-label="招商手册大图阅读器" onCancel={event => { event.preventDefault(); close(); }} onClose={() => { setExpanded(null); opener.current?.focus({ preventScroll: true }); }} onKeyDown={event => { if (event.key === 'ArrowRight') { event.preventDefault(); move(1); } if (event.key === 'ArrowLeft') { event.preventDefault(); move(-1); } }}>
-      {expanded !== null && <><div className={styles.dialogBar}><span>{pages[expanded].label} <small>{expanded + 1} / {pages.length}</small></span><div><button onClick={() => setZoom(value => !value)} aria-pressed={zoom}>{zoom ? '适应窗口' : '放大 150%'}</button><button onClick={close} autoFocus>关闭 ×</button></div></div><div ref={lightbox} className={`${styles.lightbox} ${zoom ? styles.zoomed : ''}`}><img src={pages[expanded].src} alt={pages[expanded].label} /></div><div className={styles.dialogBottom}><button disabled={expanded === 0} onClick={() => move(-1)}>← 上一页</button><span>方向键切换 · Esc 关闭</span><button disabled={expanded === pages.length - 1} onClick={() => move(1)}>下一页 →</button></div></>}
+      {expanded !== null && <><div className={styles.dialogBar}><span>{pages[expanded].label} <small>{expanded + 1} / {pages.length}</small></span><div><button onClick={() => setZoom(value => !value)} aria-pressed={zoom}>{zoom ? '适应窗口' : '放大 150%'}</button><button onClick={close} autoFocus>关闭 ×</button></div></div><div ref={lightbox} className={`${styles.lightbox} ${zoom ? styles.zoomed : ''}`}><PortfolioImage fullResolution src={pages[expanded].src} alt={pages[expanded].label} /></div><div className={styles.dialogBottom}><button disabled={expanded === 0} onClick={() => move(-1)}>← 上一页</button><span>方向键切换 · Esc 关闭</span><button disabled={expanded === pages.length - 1} onClick={() => move(1)}>下一页 →</button></div></>}
     </dialog>
   </main>;
 }

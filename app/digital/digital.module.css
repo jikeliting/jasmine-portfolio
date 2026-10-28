@@ -8,7 +8,11 @@
 .info{padding:clamp(32px,4vw,70px) clamp(28px,4vw,72px);background:linear-gradient(150deg,#fff 38%,#eaf5f8 100%);border-right:1px solid #d9e3e8}
 .back{display:inline-block;font-size:14px;margin-bottom:clamp(52px,8vh,100px)}
 .kicker{font-size:12px;letter-spacing:.2em;color:#6792a7;margin:0 0 16px}
-.projectTabs{display:flex;gap:7px;margin:0 0 24px}.projectTabs button{border:1px solid #c6d7df;border-radius:999px;padding:7px 11px;background:#ffffffa8;color:#6a8795;font-size:12px;transition:background .2s,color .2s,border-color .2s}.projectTabs button[aria-selected=true]{background:#2f7598;color:#fff;border-color:#2f7598}
+.projectTabs{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 24px}.projectTabs button{border:1px solid #c6d7df;border-radius:999px;padding:7px 11px;background:#ffffffa8;color:#6a8795;font-size:12px;transition:background .2s,color .2s,border-color .2s}.projectTabs button[aria-pressed=true]{background:#2f7598;color:#fff;border-color:#2f7598}
+.motionDisplay{flex:1;display:grid;align-items:center;padding:48px 0;min-height:380px}
+.motionVideo{display:block;width:100%;max-height:70svh;object-fit:contain;background:#101719;border-radius:10px}
+.motionTabs{margin:24px 0 0}
+.page :focus-visible{outline:2px solid #2f7598;outline-offset:4px}
 .info h1{font-size:clamp(42px,4.5vw,72px);line-height:1.08;letter-spacing:-.07em;font-weight:600;margin:0 0 18px}
 .subtitle{font-size:17px;color:#667982;margin:0}
 .rule{height:1px;background:#c9d8df;margin:46px 0 34px}

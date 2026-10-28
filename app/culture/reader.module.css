@@ -4,6 +4,13 @@
 @media(max-width:900px){.layout{grid-template-columns:34% 66%}.info{padding:30px 22px}.manual{padding:24px}.toolbar>div>span{display:none}.header nav{gap:24px}.info h1{font-size:28px}.meta dl div{display:block}.meta dd{margin-top:3px}.overview{margin-top:28px}}
 @media(max-width:640px){.header{height:64px;padding:0 20px}.logo{font-size:21px}.header nav{gap:18px;font-size:12px}.header nav>a:last-child{display:none}.layout{display:block}.info{position:static;max-height:none;padding:28px 24px 32px;overflow:visible}.back{margin-bottom:24px;font-size:14px}.info h1{font-size:33px}.english{font-size:12px}.meta{margin-top:32px}.info h2{font-size:18px;padding-bottom:12px}.meta dl{margin-top:12px}.meta dl div{display:grid;grid-template-columns:30% 70%;font-size:14px;padding:7px 0}.meta dd{margin:0}.overview{margin-top:28px}.overview p{font-size:14px;margin-top:16px}.manual{padding:24px 16px 40px;scroll-margin-top:64px}.toolbar h2{font-size:18px}.note{margin-bottom:18px}.expand{right:10px;top:10px;width:30px;height:30px;font-size:20px}.pages{gap:24px}.figure{scroll-margin-top:82px}.figure figcaption{font-size:11px}.figure figcaption>span:last-child{opacity:1}.index{top:76px;right:16px}.dialog{width:100vw;height:100svh;max-height:100svh;border-radius:0;max-width:100vw}.dialogBar{padding:0 12px}.dialogBar small{display:none}.dialogBar>div{gap:4px}.dialogBar button{font-size:12px}.dialogBottom{padding:0 10px}.dialogBottom>span{display:none}.lightbox{padding:12px}.error{padding:32px 16px;flex-wrap:wrap;font-size:13px}}
 @media(prefers-reduced-motion:reduce){.reader *{scroll-behavior:auto!important;transition:none!important}}
+.switchBack{margin-bottom:46px!important}
+.projectKicker{font-size:12px;letter-spacing:.2em;color:#6792a7;margin:0 0 16px}
+.projectSwitch{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 24px}
+.projectSwitch a{display:inline-flex;align-items:center;justify-content:center;border:1px solid #c6d7df;border-radius:999px;padding:7px 11px;background:#ffffffa8;color:#6a8795;font-size:12px;line-height:1.3;white-space:nowrap}
+.projectSwitch a[aria-current=page]{background:#2f7598;color:#fff;border-color:#2f7598}
+.projectSwitch a:hover{background:#eaf4f8}
+.projectSwitch a[aria-current=page]:hover{background:#28688a;color:#fff}
 
 /* Brand manual: the interface borrows the manual cover's black shell and red light,
    while the actual pages keep their original artwork and colour. */
@@ -79,7 +86,6 @@
 .salesTheme .dialogBar small,.salesTheme .dialogBottom>span{color:#888}
 .salesTheme .lightbox{background:#ececea}
 .salesTheme .lightbox img{box-shadow:0 16px 50px #00000021}
-
 /* The partnership reader takes its quiet stone and warm-wood accents from the manual. */
 .partnersTheme{background:#f8f6f1;color:#2a2824}
 .partnersTheme button:hover,.partnersTheme a:hover{color:#8c674b}
@@ -106,3 +112,7 @@
 .partnersTheme .dialog::backdrop{background:#332820a8}
 .partnersTheme .dialogBar,.partnersTheme .dialogBottom{background:#fffdf9;border-color:#ded2c3}
 .partnersTheme .lightbox{background:#eee7dd}
+.reader .info{top:var(--site-nav-height);max-height:calc(100svh - var(--site-nav-height))}
+.reader .figure,.reader .manual{scroll-margin-top:calc(var(--site-nav-height) + 20px)}
+.reader .index{top:calc(var(--site-nav-height) + 16px);max-height:calc(100svh - var(--site-nav-height) - 40px)}
+@media(max-width:640px){.reader .info{position:static;max-height:none}}

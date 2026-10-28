@@ -3,32 +3,90 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './digital.module.css';
 
+type Project = 'mini' | 'website' | 'motion';
+
 export default function DigitalPage() {
   const miniProgramVideo = useRef<HTMLVideoElement>(null);
   const websiteVideo = useRef<HTMLVideoElement>(null);
+  const productVideo = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
-  const [project, setProject] = useState<'mini' | 'website'>('mini');
+  const [project, setProject] = useState<Project>('mini');
+  const [motionKind, setMotionKind] = useState<'test' | 'ai'>('test');
 
   useEffect(() => {
-    document.title = '数字产品体验 — JIANI XU';
-    const syncFromUrl = () => setProject(location.hash === '#website' ? 'website' : 'mini');
+    document.title = '数字体验与动态影像 — JIANI XU';
+    const syncFromUrl = () => {
+      miniProgramVideo.current?.pause();
+      websiteVideo.current?.pause();
+      productVideo.current?.pause();
+      setPlaying(false);
+      setProject(['#motion', '#motion-ai'].includes(location.hash) ? 'motion' : location.hash === '#website' ? 'website' : 'mini');
+      setMotionKind(location.hash === '#motion-ai' ? 'ai' : 'test');
+    };
     syncFromUrl();
     window.addEventListener('hashchange', syncFromUrl);
     return () => window.removeEventListener('hashchange', syncFromUrl);
   }, []);
 
   function start() {
-    const target = project === 'mini' ? miniProgramVideo.current : websiteVideo.current;
+    const target = project === 'motion' ? productVideo.current : project === 'mini' ? miniProgramVideo.current : websiteVideo.current;
     target?.play().catch(() => { /* Native controls remain available. */ });
   }
 
-  function selectProject(next: 'mini' | 'website') {
+  function selectProject(next: Project) {
+    miniProgramVideo.current?.pause();
+    websiteVideo.current?.pause();
+    productVideo.current?.pause();
     setPlaying(false);
     setProject(next);
-    history.replaceState(null, '', `#${next}`);
+    history.replaceState(null, '', next === 'motion' && motionKind === 'ai' ? '#motion-ai' : `#${next}`);
   }
 
+  function selectMotion(next: 'test' | 'ai') {
+    productVideo.current?.pause();
+    setPlaying(false);
+    setMotionKind(next);
+    history.replaceState(null, '', next === 'ai' ? '#motion-ai' : '#motion');
+  }
+  const motionTitle = motionKind === 'ai' ? 'AI 动画演示' : '产品升温测试展示';
+  const motionSource = motionKind === 'ai' ? '/work/digital/product-ai-animation.mp4' : '/work/digital/product-heating-test.mp4';
+
   const mini = project === 'mini';
+  const projectTabs = <nav className={styles.projectTabs} aria-label="数字体验与动态影像分类">
+    {([{ id: 'mini', label: '小程序设计' }, { id: 'website', label: '官网设计' }, { id: 'motion', label: '视频作品' }] as const).map(item =>
+      <button key={item.id} aria-pressed={project === item.id} onClick={() => selectProject(item.id)}>{item.label}</button>)}
+  </nav>;
+
+  if (project === 'motion') return <main className={styles.page}>
+    <div className="site-nav-spacer" aria-hidden="true" />
+    <div className={styles.layout}>
+      <aside className={styles.info}>
+        <a className={styles.back} href="/dream-preview">← 返回作品预览</a>
+        <p className={styles.kicker}>DIGITAL &amp; MOTION</p>
+        {projectTabs}
+        <h1>视频作品</h1>
+        <p className={styles.subtitle}>产品演示与动态表达</p>
+        <div className={styles.rule} />
+        <h2>跨部门协助</h2>
+        <p className={styles.description}>协助研发部门同事，将测试数据转化为可视化的对外宣传资料。</p>
+        <button className={styles.playButton} onClick={start}>播放{motionKind === 'ai' ? ' AI 动画' : '测试视频'} <span aria-hidden="true">↗</span></button>
+      </aside>
+      <section className={styles.stage} aria-label="视频作品">
+        <div className={styles.stageHeader}><div><span>MOTION</span><h2>{motionTitle}</h2></div></div>
+        <nav className={`${styles.projectTabs} ${styles.motionTabs}`} aria-label="视频作品选择">
+          <button aria-pressed={motionKind === 'test'} onClick={() => selectMotion('test')}>产品测试视频</button>
+          <button aria-pressed={motionKind === 'ai'} onClick={() => selectMotion('ai')}>AI 动画演示</button>
+        </nav>
+        <div className={styles.motionDisplay}>
+          <video key={motionKind} className={styles.motionVideo} ref={productVideo} controls playsInline preload="metadata" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} aria-label={motionTitle}>
+            <source src={motionSource} type="video/mp4" />
+            你的浏览器暂不支持播放此视频。
+          </video>
+        </div>
+        <footer className={styles.footer}><span>JIANI XU / PORTFOLIO</span><a href="/dream-preview">返回作品预览 ↑</a></footer>
+      </section>
+    </div>
+  </main>;
   const title = mini ? <>数字产品<br />体验</> : <>网站视觉<br />设计</>;
   const subtitle = mini ? '云纳微信小程序 · 操作录屏' : '云纳官网 · 操作录屏';
   const overview = mini
@@ -36,18 +94,12 @@ export default function DigitalPage() {
     : '我主导云纳官网从 0 到 1 的视觉设计，负责全站文案、图片内容与页面交互的设计制作，将品牌与产品信息组织成清晰、连贯的网站体验。';
 
   return <main className={styles.page}>
-    <header className={styles.header}>
-      <a className={styles.logo} href="/#work">JIANI XU</a>
-      <nav aria-label="主导航"><a href="/#work">在职项目</a><a href="mailto:250220669@qq.com">联系</a></nav>
-    </header>
+    <div className="site-nav-spacer" aria-hidden="true" />
     <div className={styles.layout}>
       <aside className={styles.info}>
-        <a className={styles.back} href="/#work">← 返回项目首页</a>
-        <p className={styles.kicker}>04 / DIGITAL EXPERIENCE</p>
-        <div className={styles.projectTabs} role="tablist" aria-label="数字体验项目">
-          <button role="tab" aria-selected={mini} onClick={() => selectProject('mini')}>01 小程序设计</button>
-          <button role="tab" aria-selected={!mini} onClick={() => selectProject('website')}>02 网站设计</button>
-        </div>
+        <a className={styles.back} href="/work">← 返回项目首页</a>
+        <p className={styles.kicker}>DIGITAL &amp; MOTION</p>
+        {projectTabs}
         <h1>{title}</h1>
         <p className={styles.subtitle}>{subtitle}</p>
         <div className={styles.rule} />
@@ -72,7 +124,7 @@ export default function DigitalPage() {
             </video></div><img className={styles.laptopFrame} src="/work/digital/laptop-frame.png" alt="" aria-hidden="true" />
           </div><div className={`${styles.stageText} ${styles.websiteStageText}`}><span className={styles.dot} /> <span>{playing ? '正在播放' : '点击播放，浏览网站'}</span><p>从品牌内容到交互细节，完整呈现网页体验。</p></div></>}
         </div>
-        <footer className={styles.footer}><span>JIANI XU / PORTFOLIO</span><a href="/#work">返回书架 ↑</a></footer>
+        <footer className={styles.footer}><span>JIANI XU / PORTFOLIO</span><a href="/work">返回书架 ↑</a></footer>
       </section>
     </div>
   </main>;
