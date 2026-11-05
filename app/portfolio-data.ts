@@ -9,6 +9,7 @@ export type PosterItem = {
 
 // Keep this list newest-first. Add every newly uploaded poster or sales asset at the top.
 export const posterItems: PosterItem[] = [
+  { src: '/work/recruitment/rollup-mockup.png', title: '校招易拉宝 · 实物效果图', group: '易拉宝设计', credit: '云纳 / 2026' },
   { src: '/work/posters/brand-atmosphere-extra-01.jpg', title: '一地暖意，满室舒适', group: '品牌氛围海报｜暖居与东方美学', credit: '云纳 / 2026 · 01/03' },
   { src: '/work/posters/brand-atmosphere-extra-02.jpg', title: '席地而坐，暖意相伴', group: '品牌氛围海报｜暖居与东方美学', credit: '云纳 / 2026 · 02/03' },
   { src: '/work/posters/brand-atmosphere-extra-03.jpg', title: '漆金光入室', group: '品牌氛围海报｜暖居与东方美学', credit: '云纳 / 2026 · 03/03' },

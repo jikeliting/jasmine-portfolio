@@ -10,7 +10,6 @@ const links = [
   { href: '/work', label: '企业宣传项目', key: 'work' },
   { href: '/projects', label: '作品导航', key: 'projects' },
   { href: '/work#about', label: '关于我', key: 'about' },
-  { href: '/work#contact', label: '联系', key: 'contact' },
 ];
 
 export default function SiteNavigation() {
@@ -44,3 +43,5 @@ export default function SiteNavigation() {
     </nav>
   </header>;
 }
+
+

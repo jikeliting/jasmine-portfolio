@@ -54,7 +54,7 @@ export default function DreamPreviewPage() {
         card.inert = opacity < .8;
         card.setAttribute('aria-hidden', String(opacity < .8));
       });
-      if (visible && !document.hidden) renderer?.draw(reduced.matches ? (flip > .5 ? 1 : 0) : flip, night);
+      if (visible && !document.hidden) renderer?.draw(reduced.matches ? (flip > .5 ? 1 : 0) : flip, night, reduced.matches ? 0 : now / 1000);
       frame = requestAnimationFrame(render);
     };
     const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; });
@@ -92,3 +92,4 @@ export default function DreamPreviewPage() {
     <footer id="dream-work-end" className={s.footer}><p>徐嘉妮 / JIANI XU</p><nav><a href="/projects">浏览全部作品 ↗</a><a href="/work#contact">联系我 ↗</a></nav></footer>
   </main>;
 }
+
